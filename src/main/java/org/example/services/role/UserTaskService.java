@@ -9,6 +9,6 @@ import java.util.List;
 public interface UserTaskService {
     List<UserTask> getUserTasksById(Integer id);
     void addTaskToUserById(String task, String deadline, Integer id);
-    void deleteTaskFromUserById(Integer id);
+    void deleteTaskFromUserById(Integer userId, Integer taskId);
 
 }

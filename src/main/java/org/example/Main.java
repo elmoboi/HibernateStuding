@@ -21,7 +21,10 @@ public class Main {
         UserTaskService userTaskService = new UserTaskServiceImpl(userTaskRepository);
 
         userService.createUser("qwe2","test2");
-        userTaskService.addTaskToUserById("Сделать микросервис","2023-03-13 12:30",1);
+        userTaskService.addTaskToUserById("Сделать микросервис логина","2023-03-13 12:30",1);
+        userTaskService.addTaskToUserById("Сделать микросервис регистрации","2023-03-13 12:30",1);
+        System.out.println(userTaskService.getUserTasksById(1));
+        userTaskService.deleteTaskFromUserById(1,2);
         System.out.println(userTaskService.getUserTasksById(1));
     }
 }

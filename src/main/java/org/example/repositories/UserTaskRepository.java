@@ -29,6 +29,7 @@ public class UserTaskRepository {
         Query<UserTask> query = session.createQuery(hql, UserTask.class);
         query.setParameter("id", id);
         List<UserTask> userTaskList = query.list();
+        session.getTransaction().commit();
         return userTaskList;
     }
 
@@ -46,7 +47,13 @@ public class UserTaskRepository {
         session.persist(userTask);
         session.getTransaction().commit();
     }
-    public void deleteTaskFromUserById(Integer id){
-
+    public void deleteTaskFromUserById(Integer userId, Integer taskId){
+        session.beginTransaction();
+        String hql = "delete UserTask where user.id = :userId and id = :taskId";
+        Query query = session.createQuery(hql);
+        query.setParameter("userId", userId);
+        query.setParameter("taskId", taskId);
+        query.executeUpdate();
+        session.getTransaction().commit();
     }
 }

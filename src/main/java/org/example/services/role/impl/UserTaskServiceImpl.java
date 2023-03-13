@@ -1,5 +1,6 @@
 package org.example.services.role.impl;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.example.entity.UserTask;
 import org.example.repositories.UserTaskRepository;
 import org.example.services.role.UserTaskService;
@@ -26,7 +27,7 @@ public class UserTaskServiceImpl implements UserTaskService {
     }
 
     @Override
-    public void deleteTaskFromUserById(Integer id) {
-        userTaskRepository.deleteTaskFromUserById(id);
+    public void deleteTaskFromUserById(Integer userId, Integer taskId) {
+        userTaskRepository.deleteTaskFromUserById(userId,taskId);
     }
 }
